@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="conect_description">
+
+    <!-- 定义工具基座链接的参数 -->
+    <xacro:property name="tool_base_link_inertia_xyz" value="-0.000222405740733957 -0.000481035601624011 0.0689230138059816" />
+    <xacro:property name="tool_base_link_inertia_rpy" value="0 0 0" />
+    <xacro:property name="tool_base_link_mass" value="0.116045321966342" />
+    <xacro:property name="tool_base_link_ixx" value="0.000164904816177466" />
+    <xacro:property name="tool_base_link_ixy" value="2.02488130216797E-07" />
+    <xacro:property name="tool_base_link_ixz" value="1.50577434202425E-06" />
+    <xacro:property name="tool_base_link_iyy" value="0.000202510715131649" />
+    <xacro:property name="tool_base_link_iyz" value="8.60308417309894E-06" />
+    <xacro:property name="tool_base_link_izz" value="5.69762169244189E-05" />
+    <xacro:property name="tool_base_link_mesh" value="package://conect_description/meshes/tool_base_link.STL" />
+
+    <!-- 定义工具末端链接的参数 -->
+    <xacro:property name="tool_end_link_inertia_xyz" value="8.79459612690391E-05 -8.1632458962142E-05 -0.00099852848210466" />
+    <xacro:property name="tool_end_link_inertia_rpy" value="0 0 0" />
+    <xacro:property name="tool_end_link_mass" value="8.00000000000001E-06" />
+    <xacro:property name="tool_end_link_ixx" value="5.33333333333336E-12" />
+    <xacro:property name="tool_end_link_ixy" value="1.46216601377879E-27" />
+    <xacro:property name="tool_end_link_ixz" value="1.41756869850412E-27" />
+    <xacro:property name="tool_end_link_iyy" value="5.33333333333336E-12" />
+    <xacro:property name="tool_end_link_iyz" value="-3.92889708655019E-28" />
+    <xacro:property name="tool_end_link_izz" value="5.33333333333334E-12" />
+    <xacro:property name="tool_end_link_mesh" value="package://conect_description/meshes/tool_end_link.STL" />
+
+    <!-- 定义连接关节的参数 -->
+    <xacro:property name="conect_joint_xyz" value="-0.00272826464929472 -0.00102217054955704 0.174" />
+    <xacro:property name="conect_joint_rpy" value="0 0 0" />
+    <xacro:property name="conect_joint_axis" value="0 0 0" />
+
+    <!-- 定义链接模板宏 -->
+    <xacro:macro name="link_template" params="name inertia_xyz inertia_rpy mass ixx ixy ixz iyy iyz izz mesh_file">
+        <link name="${name}">
+            <inertial>
+                <origin xyz="${inertia_xyz}" rpy="${inertia_rpy}" />
+                <mass value="${mass}" />
+                <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="${mesh_file}" />
+                </geometry>
+                <material name="">
+                    <color rgba="1 1 1 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="${mesh_file}" />
+                </geometry>
+            </collision>
+        </link>
+    </xacro:macro>
+
+    <!-- 定义固定关节模板宏 -->
+    <xacro:macro name="fixed_joint_template" params="name parent child origin_xyz origin_rpy axis_xyz">
+        <joint name="${name}" type="fixed">
+            <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+            <axis xyz="${axis_xyz}" />
+        </joint>
+    </xacro:macro>
+
+    <!-- 使用宏创建工具基座链接 -->
+    <xacro:link_template 
+        name="tool_base_link"
+        inertia_xyz="${tool_base_link_inertia_xyz}"
+        inertia_rpy="${tool_base_link_inertia_rpy}"
+        mass="${tool_base_link_mass}"
+        ixx="${tool_base_link_ixx}"
+        ixy="${tool_base_link_ixy}"
+        ixz="${tool_base_link_ixz}"
+        iyy="${tool_base_link_iyy}"
+        iyz="${tool_base_link_iyz}"
+        izz="${tool_base_link_izz}"
+        mesh_file="${tool_base_link_mesh}" />
+
+    <!-- 使用宏创建工具末端链接 -->
+    <xacro:link_template 
+        name="tool_end_link"
+        inertia_xyz="${tool_end_link_inertia_xyz}"
+        inertia_rpy="${tool_end_link_inertia_rpy}"
+        mass="${tool_end_link_mass}"
+        ixx="${tool_end_link_ixx}"
+        ixy="${tool_end_link_ixy}"
+        ixz="${tool_end_link_ixz}"
+        iyy="${tool_end_link_iyy}"
+        iyz="${tool_end_link_iyz}"
+        izz="${tool_end_link_izz}"
+        mesh_file="${tool_end_link_mesh}" />
+
+    <!-- 使用宏创建连接关节 -->
+    <xacro:fixed_joint_template 
+        name="conect"
+        parent="tool_base_link"
+        child="tool_end_link"
+        origin_xyz="${conect_joint_xyz}"
+        origin_rpy="${conect_joint_rpy}"
+        axis_xyz="${conect_joint_axis}" />
+
+</robot>

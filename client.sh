@@ -1,0 +1,1 @@
+python src/rm_moveit_scipts/scripts/nav_pose_grasp.py 
