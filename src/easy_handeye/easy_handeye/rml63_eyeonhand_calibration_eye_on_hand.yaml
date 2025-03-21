@@ -1,0 +1,18 @@
+parameters:
+  eye_on_hand: true
+  freehand_robot_movement: true
+  move_group: arm
+  move_group_namespace: /
+  namespace: /rml63_eyeonhand_calibration_eye_on_hand/
+  robot_base_frame: base_link
+  robot_effector_frame: tool_end_link
+  tracking_base_frame: camera_link
+  tracking_marker_frame: camera_marker
+transformation:
+  qw: 0.9998873559724164
+  qx: 0.006942808802155545
+  qy: -0.005527142383262129
+  qz: 0.012104687914253252
+  x: 0.005204
+  y: -0.08376
+  z: -0.1743

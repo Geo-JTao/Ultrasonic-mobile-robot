@@ -1,0 +1,18 @@
+parameters:
+  eye_on_hand: false
+  freehand_robot_movement: true
+  move_group: arm
+  move_group_namespace: /
+  namespace: /rm65_eyeonbase_calibration_eye_on_base/
+  robot_base_frame: base_link
+  robot_effector_frame: tool_end_link
+  tracking_base_frame: camera_link
+  tracking_marker_frame: camera_marker
+transformation:
+  qw: 0.04241913005405615
+  qx: -0.6346804025252042
+  qy: -0.0002309319053815928
+  qz: 0.7716095843924936
+  x: -0.4864541678971609
+  y: -0.006712741240270603
+  z: 0.7984844953928005

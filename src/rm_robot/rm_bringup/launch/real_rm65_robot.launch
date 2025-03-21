@@ -1,0 +1,34 @@
+<launch>
+    <!-- RM-65 control -->
+    <include file="$(find rm_control)/launch/rm_65_control.launch"/>
+
+    <!-- RM-65 Driver -->
+    <include file="$(find rm_driver)/launch/rm_65_driver.launch">
+    <arg name="Arm_IP" value="192.168.20.18" />
+    <arg name="Udp_IP" value="192.168.20.10" />
+    </include>
+
+    <!-- Moveit -->
+    <include file="$(find rm_65_moveit_config)/launch/demo_realrobot.launch">
+    </include>
+
+    <!-- Camera -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" >
+        <arg name="align_depth" value="true" />
+    </include>
+
+    <!-- gripper -->
+    <!-- <include file="$(find dh_hand_driver)/launch/dh_hand_controller_ur3.launch" />  -->
+
+    <!-- calibrate-TF -->
+    <include file="$(find easy_handeye)/launch/publish.launch" >
+        <arg name="eye_on_hand" value="false" />
+        <arg name="namespace_prefix" value="rm65_eyeonbase_calibration" />
+        <arg name="robot_base_frame" value="base_link" />
+        <arg name="tracking_base_frame" value="camera_link" />
+        <arg name="calibration_file" value="$(find easy_handeye)/rm65_eyeonbase_calibration_eye_on_base.yaml" />
+    </include>
+
+</launch>
+
+
