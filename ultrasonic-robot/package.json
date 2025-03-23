@@ -1,0 +1,39 @@
+{
+    "name": "ultrasonic-robot",
+    "version": "0.0.1",
+    "description": "A voice assistant project implemented for ultra-sonic robot.",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch src/index.ts"
+    },
+    "dependencies": {
+        "@hono/node-server": "^1.13.8",
+        "@prisma/client": "^6.5.0",
+        "dotenv": "^16.4.7",
+        "hono": "^4.7.2",
+        "mi-gpt": "^4.2.0",
+        "node-fetch": "^3.3.2",
+        "prisma": "^6.5.0"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.9.4",
+        "@types/node": "^20.11.17",
+        "tsx": "^4.7.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MiliLab/ultrasonic-robot.git"
+    },
+    "author": "Mililab",
+    "bugs": {
+        "url": "https://github.com/MiliLab/ultrasonic-robot/issues"
+    },
+    "homepage": "https://github.com/MiliLab/ultrasonic-robot#readme",
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "@prisma/client",
+            "@prisma/engines",
+            "prisma"
+        ]
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "bot": {
+        "name": ""
+    },
+    "master": {
+        "name": ""
+    },
+    "room": {
+        "name": "",
+        "description": ""
+    },
+    "speaker": {
+        "userId": "#xxx",
+        "password": "#xxx",
+        "did": "小爱音箱Pro",
+        "callAIKeywords": [
+            "请",
+            "你",
+            "医生",
+            "小武医生"
+        ],
+        "wakeUpKeywords": [
+            "诊断",
+            "进入"
+        ],
+        "exitKeywords": [
+            "关闭",
+            "退出",
+            "再见"
+        ],
+        "onEnterAI": [
+            "你好，我是小武医生，很高兴为你进行检查"
+        ],
+        "onExitAI": [
+            "再见哦"
+        ],
+        "onAIAsking": [
+            "请稍等"
+        ],
+        "onAIReplied": [
+            "我说完了",
+            "还有其他问题吗"
+        ],
+        "onAIError": [
+            "啊哦，出错了，请稍后再试吧！"
+        ],
+        "ttsCommand": [
+            5,
+            1
+        ],
+        "wakeUpCommand": [
+            5,
+            3
+        ],
+        "tts": "xiaoai",
+        "streamResponse": true,
+        "exitKeepAliveAfter": 30,
+        "checkTTSStatusAfter": 3,
+        "checkInterval": 1000,
+        "debug": false,
+        "enableTrace": false,
+        "timeout": 5000
+    }
+}
